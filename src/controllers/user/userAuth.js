@@ -1,4 +1,4 @@
-const USER=require('../../models/user/usermodel');
+const USER=require('../../models/user/userModel');
 const statusCode=require('../../utilities/httpCode');
 const response=require('../../utilities/httpResponse');
 const { catchAsyncError } = require('../../middlewares/catchAsyncError');

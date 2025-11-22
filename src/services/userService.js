@@ -1,4 +1,4 @@
-const USER=require('../models/user/usermodel');
+const USER=require('../models/user/userModel');
 const mongoose=require('mongoose');
 const { buildPipeline } = require('../utilities/pagination');
 
