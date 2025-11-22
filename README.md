@@ -26,7 +26,7 @@ A comprehensive RESTful API for a task management system built with Node.js, Exp
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
+git clone <https://github.com/aryasuraj/Task_Management.git>
 cd Task
 ```
 
