@@ -6,6 +6,7 @@ const { authorizeRoles } = require('../../middlewares/authorizeRoles');
 const { createTask, getTasks, updateTask, deleteTask } = require('../../controllers/user/taskCtrl');
 const { assignTask, getAssignedTasks, uupdateAssignment } = require('../../controllers/user/assignmentCtrl');
 const { getTaskAnalytics, getUserStatistics, getTeamStatistics } = require('../../controllers/user/analyticsCtrl');
+const { createTeam } = require('../../controllers/user/teamCtrl');
 
 /**
  * @swagger
@@ -558,5 +559,48 @@ router.get("/get-user-statistics", getUserStatistics);
  *         description: Team statistics retrieved successfully
  */
 router.get("/get-team-statistics", getTeamStatistics);
+
+
+// team routes
+
+/**
+ * @swagger
+ * /api/v1/user/create-team:
+ *   post:
+ *     summary: Create a new team
+ *     tags: [Teams]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - name
+ *               - managerId
+ *               - membersIds
+ *             properties:
+ *               name:
+ *                 type: string
+ *                 example: Team 1
+ *               managerId:
+ *                 type: string
+ *                 example: 507f1f77bcf86cd799439011
+ *               membersIds:
+ *                 type: array
+ *                 items:
+ *                   type: string
+ *                 example: [507f1f77bcf86cd799439012, 507f1f77bcf86cd799439013]
+ *           example:
+ *             name: Team 1
+ *             managerId: 507f1f77bcf86cd799439011
+ *             membersIds: [507f1f77bcf86cd799439012, 507f1f77bcf86cd799439013]
+ *     responses:
+ *       201:
+ *         description: Team created successfully
+ */
+router.post("/create-team", authorizeRoles("admin", "manager"), createTeam);
 
 module.exports = router;

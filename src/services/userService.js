@@ -80,6 +80,9 @@ module.exports={
       },
       fetchUserById:async(id)=>{
         return await USER.findById(new mongoose.Types.ObjectId(id));
+      },
+      fetchUserByIds:async(ids)=>{
+        return await USER.find({_id:{$in:ids.map(id=>new mongoose.Types.ObjectId(id))}});
       }
 
     
