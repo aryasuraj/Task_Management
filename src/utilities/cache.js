@@ -22,9 +22,7 @@ const initRedis = async () => {
   }
 };
 
-if (process.env.REDIS_HOST) {
-  initRedis();
-}
+
 
 const getCache = async (key) => {
   if (!redisClient) return null;
